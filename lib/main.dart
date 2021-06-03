@@ -7,7 +7,7 @@ void main() {
 }
 
 class ContactApp extends StatelessWidget {
-  const ContactApp({ Key? key }) : super(key: key);
+  const ContactApp({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

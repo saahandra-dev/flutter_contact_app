@@ -2,7 +2,7 @@ import 'package:contact_app/screens/add_edit_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyDetailPage extends StatelessWidget {
-  MyDetailPage({Key? key}) : super(key: key);
+  MyDetailPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(

@@ -1,17 +1,22 @@
+import 'dart:io';
+
 import 'package:contact_app/reusable/reusable_textfield.dart';
 import 'package:contact_app/widgets/bottomsheet.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 //import 'package:image_picker/image_picker.dart';
 
 class AddEditContact extends StatefulWidget {
-  const AddEditContact({ Key? key }) : super(key: key);
+  const AddEditContact({ Key key }) : super(key: key);
 
   @override
   _AddEditContactState createState() => _AddEditContactState();
 }
 
 class _AddEditContactState extends State<AddEditContact> {
-  int _value = 2;
+  int _value = 1;
+  PickedFile _imageFile;
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,9 @@ class _AddEditContactState extends State<AddEditContact> {
               children: [
               Align(
                 alignment: Alignment.topLeft,
-                child: GestureDetector(
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(50.0),
+                  splashColor: Colors.grey,
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -40,7 +47,9 @@ class _AddEditContactState extends State<AddEditContact> {
                   children: [
                     CircleAvatar(
                       radius: 80,
-                     
+                      backgroundImage: _imageFile == null 
+                      ? AssetImage("assets/images/murano.jpeg") 
+                      : FileImage(File(_imageFile.path)),
                       backgroundColor: Colors.orange,
                     ),
                     Positioned(
@@ -75,6 +84,7 @@ class _AddEditContactState extends State<AddEditContact> {
                     ),
                   ],),
                   SizedBox(height:20.0),
+
                   Row(
                   children: [
                   Container(
@@ -91,13 +101,13 @@ class _AddEditContactState extends State<AddEditContact> {
                       child: Row(
                         children: [
                           Radio(
-                            
+                            splashRadius: 3.0,
                             activeColor: Colors.teal,
                             value: 1,
                             groupValue: _value,
-                            onChanged: (valueKey) {
+                            onChanged: (value) {
                               setState(() {
-                              //  _value = ValueKey;
+                                _value = value;
                               });
                             },
                           ),
@@ -123,11 +133,15 @@ class _AddEditContactState extends State<AddEditContact> {
                       child: Row(
                         children: [
                           Radio(
+                            splashRadius: 3.0,
                             activeColor: Colors.teal,
                             value: 2,
                             groupValue: _value,
-                            onChanged: (valueKey) {}
-                            
+                            onChanged: (value) {
+                              setState(() {
+                                _value = value;                      
+                              });
+                            }
                           ),
                           SizedBox(width: 10.0,),
                           Text('Female',
@@ -145,27 +159,35 @@ class _AddEditContactState extends State<AddEditContact> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Flexible(
-                      child: ReusableTextField(label: 'Firstname', icon: Icon(Icons.person, color: Colors.grey))
+                      child: ReusableTextField(
+                        label: 'Firstname', 
+                        icon: Icon(Icons.person)
+                        )
                     ),
                     SizedBox(width: 20.0,),
                     Flexible(
-                      child: ReusableTextField(label: 'Lastname', icon: Icon(Icons.person, color: Colors.grey,)),
+                      child: ReusableTextField(
+                        label: 'Lastname', 
+                        icon: Icon(Icons.person)
+                        ),
                     ),
                   ],
                 ),
                 SizedBox(height: 20.0,),
-                ReusableTextField(label: 'Phone', icon: Icon(Icons.phone)),
+                ReusableTextField(
+                  label: 'Phone', 
+                  icon: Icon(Icons.phone)
+                  ),
                 SizedBox(height: 20.0,),
               
                 ReusableTextField(
                   label: 'Email Address', 
-                  icon: Icon(Icons.email, 
-                  color: Colors.grey)
+                  icon: Icon(Icons.email)
                   ),
                 SizedBox(height: 20.0,),
                 ReusableTextField(
                   label: 'Address', 
-                  icon: Icon(Icons.home, color: Colors.grey,))
+                  icon: Icon(Icons.home))
             ],),
           ),
         ),
@@ -173,6 +195,7 @@ class _AddEditContactState extends State<AddEditContact> {
     );
   }
 }
+
 
 
 

@@ -1,5 +1,4 @@
 import 'package:contact_app/screens/add_edit_screen.dart';
-import 'package:contact_app/screens/contact_details.dart';
 import 'package:contact_app/widgets/contacts_widget.dart';
 import 'package:contact_app/widgets/favourites_carousel.dart';
 import 'package:contact_app/widgets/search_widget.dart';
@@ -36,10 +35,10 @@ class _ContactListScreenState extends State<ContactListScreen> {
         ),
         onPressed: () {
           Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => AddEditContact()),
-  );
-        },
+            context,
+            MaterialPageRoute(builder: (context) => AddEditContact()),
+          );
+                },
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 30),

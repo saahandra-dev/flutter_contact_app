@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class SubheadingWidget extends StatelessWidget {
   const SubheadingWidget({
     // required Key key,
-    required this.kFavText,
-    required this.kSeeAllText,
+     this.kFavText,
+     this.kSeeAllText,
   });
 
   final String kFavText;

@@ -5,7 +5,7 @@ import '../constants/sizes.dart';
 class SearchWidget extends StatelessWidget {
   const SearchWidget({
 
-    required this.searchController,
+     this.searchController,
   }) ;
 
   final TextEditingController searchController;

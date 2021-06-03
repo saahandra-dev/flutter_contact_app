@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
+  
+  final ImagePicker _picker = ImagePicker();
+
+ void takePhoto(ImageSource source) async {
+  final pickedFile = await _picker.getImage(
+    source: source,
+  );
+  
+}
 Widget bottomSheet() {
   return Container(
     height: 100.0,
@@ -20,7 +30,9 @@ Widget bottomSheet() {
           style: ElevatedButton.styleFrom(
                 primary: Colors.teal,
           ),
-          onPressed: () {}, 
+          onPressed: () {
+            takePhoto(ImageSource.camera);
+          }, 
           icon: Icon(Icons.camera), 
           label: Text('Camera')
         ),
@@ -29,7 +41,9 @@ Widget bottomSheet() {
           style: ElevatedButton.styleFrom(
                 primary: Colors.teal,
           ),
-          onPressed: () {}, 
+          onPressed: () {
+            takePhoto(ImageSource.gallery);
+          }, 
           icon: Icon(Icons.image), 
           label: Text('Gallery')
         )
